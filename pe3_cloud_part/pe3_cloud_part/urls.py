@@ -14,9 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+
+from django.contrib import admin 
+from django.urls import path, include 
+from msgapp import views as msgviews
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
+    path("msggate/", include("msgapp.urls")), 
+    path("tt/", msgviews.homeproc),
+    path("", msgviews.pgproc),
+    path('playground/', msgviews.homeproc2),
+    ]
+    
